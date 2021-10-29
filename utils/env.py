@@ -29,7 +29,6 @@ def get_database_uri(db: dict) -> str:
     """
     host = db.get("host")
     port = int(db.get("port"))
-    collection = db.get("collection")
     user = db.get("user")
     password = quote_plus(str(db.get("password")))
 

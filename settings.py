@@ -10,7 +10,6 @@ DATABASES = {
     "port": getenv("MONGO_PORT", 27017),
     "user": getenv("MONGO_USER"),
     "password": getenv("MONGO_PASSWORD"),
-    "collection": getenv("MONGO_COLLECTION"),
 }
 
 GOOGLE_LOGIN_REDEIRECT_SCHEME = "https"
