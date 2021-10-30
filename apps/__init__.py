@@ -1,12 +1,10 @@
-from os import urandom
-from datetime import timedelta
 from flask import Flask
 from flask_cors import CORS
 from utils.env import get_database_uri
+from utils.auth import generate_key
 from flask_pymongo import PyMongo
 from flask_oauthlib.client import OAuth
 from settings import *
-
 from . import home, misc
 
 oauth = OAuth()
@@ -22,9 +20,8 @@ google = oauth.remote_app(
     authorize_url="https://accounts.google.com/o/oauth2/auth",
 )
 
-
 app = Flask(__name__)
-app.secret_key = urandom(12)
+app.secret_key = generate_key(16)
 app.config["MONGO_URI"] = get_database_uri(DATABASES)
 mongo = PyMongo(app)
 app.register_blueprint(home.home)
