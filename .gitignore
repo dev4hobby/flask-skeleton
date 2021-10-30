@@ -6,3 +6,7 @@ __pycache__/
 
 ### IDE ###
 .vscode
+
+### Settings ###
+config.*.json
+config.json
