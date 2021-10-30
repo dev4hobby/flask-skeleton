@@ -9,9 +9,14 @@ def get_home():
     """
     메인 화면
     """
+    from database.user import get_user_by_user_auth
+
+    if "auth" in session:
+        user = get_user_by_user_auth(auth=session["auth"])
+        return render_template("home.html", hello="Greeting", user=user)
     return render_template(
         "home.html",
-        hello="Greeting",
+        hello="How'bout login?",
     )
 
 
@@ -19,6 +24,8 @@ def get_home():
 def get_login():
     from apps import google
 
+    if session.get("auth"):
+        return redirect(url_for("home.get_home"))
     return google.authorize(callback=url_for("home.callback", _external=True))
 
 
@@ -31,14 +38,13 @@ def get_logout():
 @home.route("/login/callback")
 def callback():
     from apps import google
+    from database.user import set_user, get_user_by_user_id
 
     @google.tokengetter
     def get_google_oauth_token():
         return session.get("google_token")
 
     resp = google.authorized_response()
-    foot_print = resp
-
     if resp is None:
         return "Access denied: reason=%s error=%s" % (
             request.args["error"],
@@ -46,5 +52,10 @@ def callback():
         )
     session["google_token"] = (resp["access_token"], "")
     me = google.get("userinfo")
-
-    return render_template("login.html", data=me.data)
+    user = get_user_by_user_id(provider="google", user_id=me.data.get("id"))
+    if not user:
+        auth = set_user(provider="google", info=me.data)
+        session["auth"] = auth
+    else:
+        session["auth"] = user.get("auth")
+    return redirect(url_for("home.get_home"))

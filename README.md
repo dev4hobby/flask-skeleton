@@ -16,17 +16,22 @@ pip install -r requirements.txt
 # Edit config.dev.json
 ## Change the values of the variables
 ## Get GOOGLE_CLIENT_* from https://console.developers.google.com/apis/credentials
+
+# Develop
+python app.py
+# or...
+# gunicorn app:app --bind 0.0.0.0:5000
 ```
 
 ### config.*.json
 
 ```json
 {
-  "MEALS_MONGO_HOST":"remote database url",
-  "MEALS_MONGO_PORT":"27017",
-  "MEALS_MONGO_USER":"username",
-  "MEALS_MONGO_PASSWORD":"password",
-  "MEALS_MONGO_COLLECTION":"collection_name",
+  "MONGO_HOST":"remote database url",
+  "MONGO_PORT":"27017",
+  "MONGO_USER":"username",
+  "MONGO_PASSWORD":"password",
+  "MONGO_NAME":"database_name",
   "GOOGLE_CLIENT_ID":"",
   "GOOGLE_CLIENT_SECRET":""
 }

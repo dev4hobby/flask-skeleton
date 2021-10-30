@@ -10,6 +10,7 @@ DATABASES = {
     "port": getenv("MONGO_PORT", 27017),
     "user": getenv("MONGO_USER"),
     "password": getenv("MONGO_PASSWORD"),
+    "name": getenv("MONGO_NAME"),
 }
 
 GOOGLE_LOGIN_CLIENT_ID = getenv("GOOGLE_CLIENT_ID")
