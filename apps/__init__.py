@@ -5,7 +5,7 @@ from utils.auth import generate_key
 from flask_pymongo import PyMongo
 from flask_oauthlib.client import OAuth
 from settings import *
-from . import home, misc
+from . import home, misc, wtfLab
 
 oauth = OAuth()
 google = oauth.remote_app(
@@ -26,5 +26,6 @@ app.config["MONGO_URI"] = get_database_uri(DATABASES)
 mongo = PyMongo(app)
 app.register_blueprint(home.home)
 app.register_blueprint(misc.misc)
+app.register_blueprint(wtfLab.wtf)
 
 CORS(app, support_credentials=True)
