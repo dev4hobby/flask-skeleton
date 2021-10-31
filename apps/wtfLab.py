@@ -46,7 +46,6 @@ def get_user_with_wtf():
 @wtf.route("/user-with-wtf", methods=["GET"])
 def get_user_query_with_wtf():
     query = MyValidator(request.args, meta={"csrf": False})
-    print(query.data)
     if query.validate():
         return json.dumps(query.data), 200
     return json.dumps(query.errors), 400

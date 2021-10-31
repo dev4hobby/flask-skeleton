@@ -55,7 +55,6 @@ def callback():
     me = google.get("userinfo")
     user = get_user_by_user_id(provider="google", user_id=me.data.get("id"))
     if not user:
-        print("google", me.data)
         auth = set_user(provider="google", info=me.data)
         session["auth"] = auth
     else:

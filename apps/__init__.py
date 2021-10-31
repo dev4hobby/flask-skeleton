@@ -31,7 +31,6 @@ app.config["MONGODB_SETTINGS"] = {
     "username": DATABASES.get("username"),
     "password": DATABASES.get("password"),
 }
-print(app.config["MONGODB_SETTINGS"])
 db.init_app(app)
 
 app.register_blueprint(home.home)
