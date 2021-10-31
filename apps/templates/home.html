@@ -8,9 +8,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            {{hello}}
-            <h1>{{ title }}</h1>
-            <p>{{ message }}</p>
+            {% if auth == true %}
+            <h1>Greeting</h1>
+            <h2>{{user.email}}</h2>
+            <h3><a href="/logout">Farewell</a></h3>
+            {% else %}
+            <h1>Welcome</h1>
+            <h2><a href="/login">Go to login</a></h2>
+            {% endif %}
         </div>
     </div>
 </div>

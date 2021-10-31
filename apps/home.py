@@ -13,11 +13,11 @@ def get_home():
 
     if "auth" in session:
         user = get_user_by_user_auth(auth=session["auth"])
-        return render_template("home.html", hello="Greeting", user=user)
-    return render_template(
-        "home.html",
-        hello="How'bout login?",
-    )
+        if not user:
+            session.pop("auth")
+            return redirect(url_for("home.get_home"))
+        return render_template("home.html", auth=True, user=user)
+    return render_template("home.html", auth=False, user=None)
 
 
 @home.route("/login")
@@ -32,6 +32,7 @@ def get_login():
 @home.route("/logout")
 def get_logout():
     session.pop("google_token", None)
+    session.pop("auth", None)
     return redirect(url_for("home.get_home"))
 
 
@@ -57,5 +58,5 @@ def callback():
         auth = set_user(provider="google", info=me.data)
         session["auth"] = auth
     else:
-        session["auth"] = user.get("auth")
+        session["auth"] = user.auth
     return redirect(url_for("home.get_home"))

@@ -28,7 +28,7 @@ python app.py
 
 ```json
 {
-  "MONGO_HOST":"remote database url",
+  "MONGO_HOST":"remote database url without protocol",
   "MONGO_PORT":"27017",
   "MONGO_USER":"username",
   "MONGO_PASSWORD":"password",
