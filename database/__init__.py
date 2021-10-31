@@ -1,4 +1,3 @@
-from apps import mongo
-from settings import DATABASES
+from flask_mongoengine import MongoEngine
 
-db = mongo.db.client.get_database(DATABASES.get("name"))
+db = MongoEngine()
