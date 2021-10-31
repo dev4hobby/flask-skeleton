@@ -3,6 +3,7 @@
 Template to starting a flask application more easily
 
 - Flask
+- Flask-WTF
 - MongoDB
 - Google OAuth
 
