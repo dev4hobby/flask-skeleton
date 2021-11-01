@@ -1,4 +1,4 @@
-from apps import mongo
+from flask_pymongo import PyMongo
 from settings import DATABASES
 
-db = mongo.db.client.get_database(DATABASES.get("name"))
+db = PyMongo()
