@@ -4,7 +4,7 @@ from utils.env import get_database_uri
 from utils.auth import generate_key
 from settings import *
 from database import db
-from . import home, misc, wtfLab
+from . import home, misc, wtfLab, redisLab
 
 app = Flask(__name__)
 app.secret_key = generate_key(16)
@@ -21,5 +21,6 @@ db.init_app(app)
 app.register_blueprint(home.home)
 app.register_blueprint(misc.misc)
 app.register_blueprint(wtfLab.wtf)
+app.register_blueprint(redisLab.redis_lab)
 
 CORS(app, support_credentials=True)

@@ -13,6 +13,13 @@ DATABASES = {
     "name": getenv("MONGO_NAME"),
 }
 
+REDIS = {
+    "expire": int(getenv("REDIS_EXPIRE", 3600)),
+    "host": getenv("REDIS_HOST", "localhost"),
+    "port": getenv("REDIS_PORT", 6379),
+    "password": getenv("REDIS_PASSWORD", None),
+}
+
 GOOGLE_LOGIN_CLIENT_ID = getenv("GOOGLE_CLIENT_ID")
 GOOGLE_LOGIN_CLIENT_SECRET = getenv("GOOGLE_CLIENT_SECRET")
 
