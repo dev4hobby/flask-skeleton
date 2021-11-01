@@ -4,6 +4,7 @@ from utils.env import get_database_uri
 from utils.auth import generate_key
 from flask_oauthlib.client import OAuth
 from settings import *
+from database import db
 from . import home, misc, wtfLab
 
 oauth = OAuth()
@@ -21,8 +22,6 @@ google = oauth.remote_app(
 
 app = Flask(__name__)
 app.secret_key = generate_key(16)
-
-from database import db
 
 app.config["MONGODB_SETTINGS"] = {
     "db": DATABASES.get("name"),
