@@ -1,5 +1,6 @@
 import json
 from flask import Blueprint, render_template, url_for, session, request, redirect
+from database.user import get_user_by_user_auth
 
 home = Blueprint("home", __name__, url_prefix="/")
 
@@ -9,7 +10,6 @@ def get_home():
     """
     메인 화면
     """
-    from database.user import get_user_by_user_auth
 
     if "auth" in session:
         user = get_user_by_user_auth(auth=session["auth"])
