@@ -2,7 +2,6 @@ from os import getenv, environ
 from utils.env import init_json_env
 from datetime import datetime
 
-
 init_json_env(environ.get("ENVIRONMENT", "dev"))
 WOKEUP_TIME = datetime.now()
 DATABASES = {
