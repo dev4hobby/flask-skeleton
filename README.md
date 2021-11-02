@@ -5,6 +5,7 @@ Template to starting a flask application more easily
 - Flask
 - Flask-WTF
 - MongoDB
+- Redis
 - Google OAuth
 
 ## How to begin
@@ -34,7 +35,11 @@ python app.py
   "MONGO_PASSWORD":"password",
   "MONGO_NAME":"database_name",
   "GOOGLE_CLIENT_ID":"",
-  "GOOGLE_CLIENT_SECRET":""
+  "GOOGLE_CLIENT_SECRET":"",
+  "REDIS_EXPIRE": 3600,
+  "REDIS_HOST":"localhost",
+  "REDIS_PORT":"6379",
+  "REDIS_PASSWORD":""
 }
 ```
 
