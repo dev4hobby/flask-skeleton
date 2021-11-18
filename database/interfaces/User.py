@@ -8,6 +8,8 @@ class User(db.Document):
     email = db.StringField(required=True)
     verified_email = db.BooleanField(required=True)
     picture = db.StringField()
+    nickname = db.StringField()
+    message = db.StringField()
 
     def __repr__(self):
         return "<User %r>" % self.email
